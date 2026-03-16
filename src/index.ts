@@ -1,11 +1,15 @@
 import { serve } from '@hono/node-server'
 import { Hono } from 'hono'
+import postRoute from './routes/post.route.js';
 
 const app = new Hono()
 
 app.get('/', (c) => {
   return c.text('Hello Hono!')
 })
+
+
+app.route('/post', postRoute);
 
 serve({
   fetch: app.fetch,
